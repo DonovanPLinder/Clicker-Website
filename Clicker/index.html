@@ -16,17 +16,18 @@
 </div>
     <p id="totalGold">0 Gold</p> <p id="goldPerSecond">Gold Buys stuff</p>
 
-    <p id="fisherman">0 fisherman</p> <p id="fishermanfishpersecond">Each Fisherman produces 1 fish every 2 seconds</p>
+    <p id="fisherman">1 fisherman</p> <p id="fishermanfishpersecond">Each Fisherman produces 1 fish every 2 seconds</p>
     <button onclick="fishermanMake()">Buy Fisherman</button><br>
 
     <p id="villagers">0 villagers</p> <p id="villagersgoldpersecond">Each Villager produces 1 gold every 5 seconds</p>
-    <button onclick="villagersMake()">Convert Fisherman to villagers</button><br>
+    <button onclick="villagersMake()">Convert Fisherman to villagers</button> <br> <br>
+     <button onclick="villagersTrade()">Convert Villagers to Fisherman</button><br>
     <p>Start An Expedition Today</p>
          <div id="myProgress">
            <div id="myBar"></div>
          </div>
          <br>
-   </div>
+
          <button onclick="startExpedition()">Begin Expedition</button><p>Cost 1 fisherman and 10 Gold</p>
          <div id="expeditionError"></div>
 
