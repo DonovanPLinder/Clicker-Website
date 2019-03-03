@@ -8,14 +8,55 @@ var gameData = {
   fishermanCost: 1,
   fishPerSecond: 1,
   villagersUpkeep: 1,
+
+}
+var gameFish = {
+  catFish: 0,
+ troutFish: 0,
+ salmonFish: 0,
+ bassFish: 0,
 }
 // FISH
+function catchDifFish() {
+  var randomNum = Math.random();
+  if(randomNum < .995){
+    // alert("hello")
+    var commonFishArray = ['numberOfCatFish', 'numberOfTroutFish', 'numberOfSalmonFish', 'numberOfBassFish'];
+    var commonFish = commonFishArray[Math.floor(Math.random() * commonFishArray.length)];
+    switch (commonFish) {
+      case commonFishArray[0]:
+        gameFish.catFish = gameFish.catFish += 1;
+        document.getElementById(commonFish).innerHTML = " # of Cat Fish: " + gameFish.catFish;
+      break;
+      case commonFishArray[1]:
+        gameFish.troutFish = gameFish.troutFish += 1;
+        document.getElementById(commonFish).innerHTML = " # of Trout Fish: " + gameFish.troutFish;
+      break;
+      case commonFishArray[2]:
+        gameFish.salmonFish = gameFish.salmonFish += 1;
+        document.getElementById(commonFish).innerHTML = " # of Salmon Fish: " + gameFish.salmonFish;
+      break;
+      case commonFishArray[3]:
+        gameFish.bassFish = gameFish.bassFish += 1;
+        document.getElementById(commonFish).innerHTML = " # of Bass Fish: " + gameFish.bassFish;
+      break;
+
+    }
+
+  }
+  gameData.fish += gameData.fishPerClick
+  document.getElementById("fishCaught").innerHTML = gameData.fish + " Fish Caught"
+}
+function consumeFish(){
+
+}
 function catchFish() {
   gameData.fish += gameData.fishPerClick
   document.getElementById("fishCaught").innerHTML = gameData.fish + " Fish Caught"
 }
 function addFish(){
-  gameData.fish += (gameData.fisherman - (gameData.villagersUpkeep * gameData.villagers))
+  gameData.fishPerSecond = gameData.fisherman - gameData.villagersUpkeep
+  gameData.fish += gameData.fishPerSecond
   document.getElementById("fishCaught").innerHTML = gameData.fish + " Fish Caught"
 }
 function buyFishPerClick(){
@@ -59,6 +100,7 @@ function villagersMake(){
   else if (gameData.fisherman > 0) {
     gameData.villagers += 1
     gameData.fisherman -= 1
+    upKeep()
     document.getElementById("villagers").innerHTML = gameData.villagers + " villagers"
     document.getElementById("fisherman").innerHTML = gameData.fisherman + " fisherman"
   }
@@ -71,10 +113,15 @@ function villagersTrade(){
   else if (gameData.villagers > 0) {
     gameData.villagers -= 1
     gameData.fisherman += 1
+    upKeep()
     document.getElementById("villagers").innerHTML = gameData.villagers + " villagers"
     document.getElementById("fisherman").innerHTML = gameData.fisherman + " fisherman"
 
   }
+}
+
+function upKeep(){
+  gameData.villagersUpkeep = gameData.villagers * 1
 }
 //GAMESAVE-MAINTANENCE
 var mainGameLoop = window.setInterval(function() {
@@ -121,5 +168,34 @@ else{
       gameData.totalGold = gameData.totalGold + expeditionCostGold[0]
     }
   },1000*expeditionCostTime[3]);
+}
+}
+// Expedition -------------------------------------------------------
+var expeditionsArray = [
+  [1, 10, 1]
+];
+// var expeditionCostGold = [, 15, 25, 50];
+// var expeditionCostTime = [1, 2, 5, 10];
+function startExpedition(){
+if(gameData.fisherman < expeditionsArray[0][0]){
+  document.getElementById("expeditionError").innerHTML = "Not Enough Funds";
+}
+else{
+  gameData.totalGold = gameData.totalGold - expeditionsArray[0][1]
+  gameData.fisherman = gameData.fisherman - expeditionsArray[0][2]
+  document.getElementById("fisherman").innerHTML = gameData.fisherman + " fisherman"
+  document.getElementById("totalGold").innerHTML = gameData.totalGold + " gold"
+  var width = 0;
+  var elem = document.getElementById("myBar");
+  var myVar = setInterval(function(){
+    if(width < 60){
+      width++;
+      elem.style.width = width + '%';
+    }
+    else{
+      gameData.fisherman = gameData.fisherman + expeditionsArray[0][0]
+      gameData.totalGold = gameData.totalGold + expeditionsArray[0][1]
+    }
+  },1000*expeditionsArray[0][1]);
 }
 }
