@@ -50,14 +50,16 @@ function catchDifFish() {
 function consumeFish(){
 
 }
-function catchFish() {
-  gameData.fish += gameData.fishPerClick
-  document.getElementById("fishCaught").innerHTML = gameData.fish + " Fish Caught"
-}
+
+// function catchFish() {
+//   gameData.fish += gameData.fishPerClick
+//   document.getElementById("fishCaught").innerHTML = gameData.fish + " Fish Caught"
+// }
 function addFish(){
   gameData.fishPerSecond = gameData.fisherman - gameData.villagersUpkeep
   gameData.fish += gameData.fishPerSecond
   document.getElementById("fishCaught").innerHTML = gameData.fish + " Fish Caught"
+
 }
 function buyFishPerClick(){
   if(gameData.fish >= gameData.fishPerClickCost){
