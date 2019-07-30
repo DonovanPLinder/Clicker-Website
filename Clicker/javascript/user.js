@@ -1,4 +1,5 @@
-function User(gold, fishPerClick, fishTotal, fishermanCount, villagerCount){
+class User{
+  constructor(gold, fishPerClick, fishTotal, fishermanCount, villagerCount){
     this.gold = gold;
     this.fishPerClick = fishPerClick;
     this.fishTotal = fishTotal;
@@ -6,21 +7,27 @@ function User(gold, fishPerClick, fishTotal, fishermanCount, villagerCount){
     this.villagerCount = villagerCount;
     this.fisherman = fisherman;
     this.villager = villager; 
-
-    this.addFisherman = () => {
-        if(user.gold >= fisherman.cost){
-            user.fishermanCount += 1;
-            user.gold -= fisherman.cost;
+  }
+    //Function to add a fisherman to the user
+    addFisherman() {
+        //if the user has enough gold to purchase 
+        if(this.gold >= fisherman.cost){
+            /*add one to the fisherman count and subtract the cost of a fisherman from the user's gold
+              returning true to tell main.js that the add was successful*/
+            this.fishermanCount += 1;
+            this.gold -= fisherman.cost;
             return true;
         }else{
             return false;
         }
     }
 
-    this.addVillager = () => {
-        if(user.fishTotal >= villager.cost){
-            user.villagerCount += 1;
-            user.fishTotal -= villager.cost;
+    //Function to add a villager to the user
+    //Works just like addFisherman except that it cost's fish to purchase a villager
+    addVillager() {
+        if(this.fishTotal >= villager.cost){
+            this.villagerCount += 1;
+            this.fishTotal -= villager.cost;
             return true;
           }
           else{

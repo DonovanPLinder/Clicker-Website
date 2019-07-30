@@ -1,8 +1,10 @@
-function Villager(cost, goldPerSec){
-    this.cost = cost;
-    this.goldPerSec = goldPerSec;
+class Villager {
+    constructor(cost, goldPerSec){
+        this.cost = cost;
+        this.goldPerSec = goldPerSec;
+    }
     
-    this.increaseVillagerCost = () => {
+    increaseVillagerCost() {
         this.cost *= 2;
     }
 }

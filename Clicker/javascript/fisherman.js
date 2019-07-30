@@ -1,8 +1,10 @@
-function Fisherman(cost, fishPerSec){
-    this.cost = cost;
-    this.fishPerSec = fishPerSec;
+class Fisherman {
+    constructor(cost, fishPerSec){
+        this.cost = cost;
+        this.fishPerSec = fishPerSec;
+    }
 
-    this.increaseFishermanCost = () => {
+    increaseFishermanCost() {
         this.cost *= 1.3;
     }
 }
