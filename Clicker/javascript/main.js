@@ -6,7 +6,6 @@ var user = new User(0, 1, 0, 1, 1,);                              //User(gold, f
 
 //GAMESTATE-----------------------------------------------------------------------------------
 window.setInterval(function() {
-  addFish();
   addGold();
   updateFish();
   updateGold();
@@ -14,7 +13,13 @@ window.setInterval(function() {
   updateVillagers();
 }, 1000);
 
+
 //These functions essentially update the game data and display current values like total gold and total fish to the web page
+window.setInterval(function(){
+  addFish();
+}, 8000);
+
+
 function addFish(){
   user.fishTotal += user.fishermanCount * fisherman.fishPerSec;
 }
@@ -23,6 +28,7 @@ function addGold(){
 }
 function updateFish(){
   document.querySelector("#fishCaughtValue").innerText = user.fishTotal;
+  document.querySelector("#titleFishCount").innerText = user.fishTotal + " Fish Caught";
 }
 function updateGold(){
   document.querySelector("#totalGoldValue").innerHTML = Math.floor(user.gold);
