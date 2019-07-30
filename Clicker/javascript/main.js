@@ -1,7 +1,8 @@
 //Initializing game objects
 var fisherman = new Fisherman(1, 1);                              //Fisherman(cost, fishPerSec)
 var villager = new Villager(1, 0.2);                              //Villager(cost, goldPerSec)
-var user = new User(0, 1, 0, 1, 1,);          //User(gold, fishPerClick, fishTotal, fishermanCount, VillagerCount)
+var user = new User(0, 1, 0, 1, 1,);                              //User(gold, fishPerClick, fishTotal, fishermanCount, villagerCount)
+
 
 //GAMESTATE-----------------------------------------------------------------------------------
 window.setInterval(function() {
@@ -12,9 +13,12 @@ window.setInterval(function() {
   updateVillagers();
 }, 1000);
 
+
+//These functions essentially update the game data and display current values like total gold and total fish to the web page
 window.setInterval(function(){
   addFish();
 }, 8000);
+
 
 function addFish(){
   user.fishTotal += user.fishermanCount * fisherman.fishPerSec;
