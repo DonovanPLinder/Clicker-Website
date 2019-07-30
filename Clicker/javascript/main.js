@@ -30,7 +30,7 @@ function updateGold(){
   document.querySelector("#totalGoldValue").innerHTML = Math.floor(user.gold);
 }
 function updateFisherman(){
-  document.querySelector("#fisherman").innerHTML = user.fishermanCount + " Fisherman";
+  document.querySelector("#fisherman").innerHTML = user.fishermanCount + " Fishermen";
   document.querySelector("#costFishermanNote").innerHTML = Math.ceil(fisherman.cost);
 }
 function updateVillagers(){
