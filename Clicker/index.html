@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Fishing Incremental</title>
+    <title id="titleFishCount">0</title>
+    <link rel="shortcut icon" type="image/png" href="resources/fishingRod.png">
 <!-- Bootstrap CSS -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,7 +40,7 @@
             <div class="card">
                 <div class="card-body">
                   <h5 class="card-title" id="fisherman">0 fisherman</h5>
-                  <p class="card-text">Each Fisherman produces 1 fish every second</p>
+                  <p class="card-text">Each Fisherman produces 1 fish every 8 seconds</p>
                   <button onclick="buyFisherman()" class="btn btn-primary" id="buyFishermanButton">Buy Fisherman</button>
                   <p id="nextFishermanNote">Next Fisherman: <span id="costFishermanNote"></span> <i class="fas fa-coins"></i></p>
                 </div>
