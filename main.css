@@ -1,0 +1,94 @@
+body{
+  /* background: #fffbe8; */
+  background-image: url("../resources/water.jpg");
+}
+#myProgress {
+  width: 100%;
+  height: 30px;
+  background-color: #ddd;
+  margin-bottom: 1em;
+}
+#expeditionBanner {
+  margin-top: 1em;
+  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+}
+#myBar {
+
+  background-color: #4CAF50;
+  width: 10px;
+  height: 30px;
+
+}
+#buyFishermanButton{
+  width: 40%;
+}
+#buyVillagerButton{
+  width: 40%;
+}
+#fishLabel {
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
+#fishButton {
+  padding-bottom: 2em;
+}
+
+#catchFish{
+  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+}
+
+#fishCaught{
+  background: #85add6;
+  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+}
+#nextFishermanNote{
+  text-align: right;
+}
+#nextVillagerNote{
+  text-align: right;
+}
+
+#totalGold{
+  background: gold;
+  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+}
+
+#errorBox{
+  height: 50px;
+}
+
+#error{
+  color: red;
+  text-align: center;
+}
+#lblBeginExpedition{
+  color: white;
+  display: inline-block;
+}
+
+#upgrades{
+  width:100%;
+  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+}
+
+.list-group{
+  max-height: 245px;
+  overflow-y: scroll;
+}
+
+#upgrades-title{
+  background: rgb(252, 252, 240);
+}
+.card{
+  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+}
+
+.tracker{
+  padding: 0.5em 0.5em;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 3px;
+  display: inline-block;
+  color: white;
+  width: 15%;
+}
