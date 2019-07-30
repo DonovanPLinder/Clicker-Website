@@ -1,150 +1,79 @@
-var gameData = {
-  fish: 0,
-  fishPerClick: 1,
-  fishPerClickCost: 10,
-  fisherman: 1,
-  villagers: 0,
-  gold: 0,
-  fishermanCost: 1,
-  fishPerSecond: 1,
-  villagersUpkeep: 1,
+//Initializing game objects
+var fisherman = new Fisherman(1, 1);                              //Fisherman(cost, fishPerSec)
+var villager = new Villager(1, 0.2);                              //Villager(cost, goldPerSec)
+var user = new User(0, 1, 0, 1, 1,);          //User(gold, fishPerClick, fishTotal, fishermanCount, VillagerCount)
 
-}
-var gameFish = {
-  catFish: 0,
- troutFish: 0,
- salmonFish: 0,
- bassFish: 0,
-}
-// FISH
-function catchDifFish() {
-  var randomNum = Math.random();
-  if(randomNum < .995){
-    // alert("hello")
-    var commonFishArray = ['numberOfCatFish', 'numberOfTroutFish', 'numberOfSalmonFish', 'numberOfBassFish'];
-    var commonFish = commonFishArray[Math.floor(Math.random() * commonFishArray.length)];
-    switch (commonFish) {
-      case commonFishArray[0]:
-        gameFish.catFish = gameFish.catFish += 1;
-        document.getElementById(commonFish).innerHTML = " # of Cat Fish: " + gameFish.catFish;
-      break;
-      case commonFishArray[1]:
-        gameFish.troutFish = gameFish.troutFish += 1;
-        document.getElementById(commonFish).innerHTML = " # of Trout Fish: " + gameFish.troutFish;
-      break;
-      case commonFishArray[2]:
-        gameFish.salmonFish = gameFish.salmonFish += 1;
-        document.getElementById(commonFish).innerHTML = " # of Salmon Fish: " + gameFish.salmonFish;
-      break;
-      case commonFishArray[3]:
-        gameFish.bassFish = gameFish.bassFish += 1;
-        document.getElementById(commonFish).innerHTML = " # of Bass Fish: " + gameFish.bassFish;
-      break;
+//GAMESTATE-----------------------------------------------------------------------------------
+window.setInterval(function() {
+  addFish();
+  addGold();
+  updateFish();
+  updateGold();
+  updateFisherman();
+  updateVillagers();
+}, 1000);
 
-    }
-
-  }
-  gameData.fish += gameData.fishPerClick
-  document.getElementById("fishCaught").innerHTML = gameData.fish + " Fish Caught"
-}
-function consumeFish(){
-
-}
-
-// function catchFish() {
-//   gameData.fish += gameData.fishPerClick
-//   document.getElementById("fishCaught").innerHTML = gameData.fish + " Fish Caught"
-// }
 function addFish(){
-  gameData.fishPerSecond = gameData.fisherman - gameData.villagersUpkeep
-  gameData.fish += gameData.fishPerSecond
-  document.getElementById("fishCaught").innerHTML = gameData.fish + " Fish Caught"
-
+  user.fishTotal += user.fishermanCount * fisherman.fishPerSec;
 }
-function buyFishPerClick(){
-  if(gameData.fish >= gameData.fishPerClickCost){
-    gameData.fish -= gameData.fishPerClickCost
-    gameData.fishPerClick += 1
-    gameData.fishPerClickCost *= 2
-    document.getElementById("fishCaught").innerHTML = gameData + " Fish Caught"
-    document.getElementById("perClickUpgrade").innerHTML = "Upgrade Fishing Rod (Current Level " +
-    gameData.fishPerClick + ") Cost: " + gameData.fishPerClickCost + " Fish"
-  }
-}
-// GOLD
 function addGold(){
-  var totalGold =  gameData.gold += gameData.villagers / 5
-  totalGold = totalGold.toFixed(1);
-  document.getElementById("totalGold").innerHTML = totalGold + "Gold"
-  totalGold = parseInt(totalGold);
+  user.gold += user.villagerCount * villager.goldPerSec;
+}
+function updateFish(){
+  document.querySelector("#fishCaughtValue").innerText = user.fishTotal;
+}
+function updateGold(){
+  document.querySelector("#totalGoldValue").innerHTML = Math.floor(user.gold);
+}
+function updateFisherman(){
+  document.querySelector("#fisherman").innerHTML = user.fishermanCount + " Fisherman";
+  document.querySelector("#costFishermanNote").innerHTML = Math.ceil(fisherman.cost);
+}
+function updateVillagers(){
+  document.querySelector("#villagers").innerHTML = user.villagerCount + " Villagers";
+  document.querySelector("#costVillagerNote").innerHTML = Math.ceil(villager.cost);
+}
+//Button Events--------------------------------------------------------------------------------
+function catchFish(){
+  user.fishTotal++;
+  document.querySelector("#fishCaughtValue").innerHTML = user.fishTotal;
 }
 
-
-// FISHERMAN
-function fishermanMake() {
-  alert(gameData.fishermanCost);
-  if(gameData.gold < gameData.fishermanCost){
-    document.getElementById("error").innerHTML = "You cannot buy a fisherman"
+//Buy Fisherman
+function buyFisherman() {
+  var addFisherman = user.addFisherman();
+  if(addFisherman){
+    fisherman.increaseFishermanCost();
+    updateGold();
+    updateFisherman();
   }
   else{
-  gameData.fisherman += 1
-  gameData.gold = gameData.gold - gameData.fishermanCost
-  gameData.fishermanCost = (gameData.fishermanCost *= 2)
-  document.getElementById("fisherman").innerHTML = gameData.fisherman + " fisherman"
-  document.getElementById("totalGold").innerHTML = gameData.gold + "Gold"
-}
-}
-// VILLAGERS
-function villagersMake(){
-  if (gameData.fisherman == 0){
-    alert("You cannot convert if you have no fisherman");
-  }
-  else if (gameData.fisherman > 0) {
-    gameData.villagers += 1
-    gameData.fisherman -= 1
-    upKeep()
-    document.getElementById("villagers").innerHTML = gameData.villagers + " villagers"
-    document.getElementById("fisherman").innerHTML = gameData.fisherman + " fisherman"
+    document.getElementById("error").innerHTML = "You cannot buy a fisherman!";
+    document.getElementById("error").style.display = "block";
+    window.setTimeout(() => { 
+      document.getElementById("error").style.display = "none";
+    }, 3000);
   }
 }
 
-function villagersTrade(){
-  if(gameData.villagers == 0){
-    alert("YOU CANNOT MAKE NO CONVERT FISHERMAN WITHOUT VILLAGERS")
+//Buy Villager
+function buyVillager() {
+  var addVillager = user.addVillager();
+  if(addVillager){
+    villager.increaseVillagerCost();
+    updateFish();
+    updateVillagers();
   }
-  else if (gameData.villagers > 0) {
-    gameData.villagers -= 1
-    gameData.fisherman += 1
-    upKeep()
-    document.getElementById("villagers").innerHTML = gameData.villagers + " villagers"
-    document.getElementById("fisherman").innerHTML = gameData.fisherman + " fisherman"
-
+  else{
+    document.getElementById("error").innerHTML = "You cannot buy a villager!";
+    document.getElementById("error").style.display = "block";
+    window.setTimeout(() => { 
+      document.getElementById("error").style.display="none";
+    }, 3000);
   }
 }
 
-function upKeep(){
-  gameData.villagersUpkeep = gameData.villagers * 1
-}
-//GAMESAVE-MAINTANENCE
-var mainGameLoop = window.setInterval(function() {
-}, 100)
 
-var fishermanLoop = window.setInterval(function(){
-  addFish();
-}, 1000)
-
-var villagerLoop = window.setInterval(function(){
-  addGold();
-}, 1000)
-
-var saveGameLoop = window.setInterval(function() {
-  localStorage.setItem('fishingIncrementalSave', JSON.stringify(gameData))
-}, 15000)
-
-var savegame = JSON.parse(localStorage.getItem("fishingIncrementalSave"))
-if (savegame !== null) {
-  gameData = savegame
-}
 // Time Bar--------------------------------------------------------------------------------
 var expeditionCostFisherman = [1, 3, 8, 15];
 var expeditionCostGold = [10, 15, 25, 50];
@@ -201,3 +130,4 @@ else{
   },1000*expeditionsArray[0][1]);
 }
 }
+
