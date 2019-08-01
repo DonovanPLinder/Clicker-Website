@@ -1,5 +1,5 @@
 //Initializing game objects
-var fisherman = new Fisherman(1, 1);                              //Fisherman(cost, fishPerSec)
+var fisherman = new Fisherman(1, 0.125);                              //Fisherman(cost, fishPerSec)
 var villager = new Villager(1, 0.2);                              //Villager(cost, goldPerSec)
 var user = new User(0, 1, 0, 1, 1,);                              //User(gold, fishPerClick, fishTotal, fishermanCount, villagerCount)
 
@@ -7,6 +7,7 @@ var user = new User(0, 1, 0, 1, 1,);                              //User(gold, f
 //GAMESTATE-----------------------------------------------------------------------------------
 window.setInterval(function() {
   addGold();
+  addFish();
   updateFish();
   updateGold();
   updateFisherman();
@@ -15,20 +16,21 @@ window.setInterval(function() {
 
 
 //These functions essentially update the game data and display current values like total gold and total fish to the web page
-window.setInterval(function(){
-  addFish();
-}, 8000);
 
-
+//sets fish total to # of fisherman times the amount of fish each one generates per second
 function addFish(){
   user.fishTotal += user.fishermanCount * fisherman.fishPerSec;
 }
+
+//sets the gold total to the # of villagers times the amount of gold each one generates per second
 function addGold(){
   user.gold += user.villagerCount * villager.goldPerSec;
 }
+
+//each method updates the correct display element with current values every second
 function updateFish(){
   document.querySelector("#fishCaughtValue").innerText = user.fishTotal;
-  document.querySelector("#titleFishCount").innerText = user.fishTotal + " Fish Caught";
+  document.querySelector("#titleFishCount").innerText = Math.floor(user.fishTotal) + " Fish Caught";
 }
 function updateGold(){
   document.querySelector("#totalGoldValue").innerHTML = Math.floor(user.gold);
@@ -41,6 +43,7 @@ function updateVillagers(){
   document.querySelector("#villagers").innerHTML = user.villagerCount + " Villagers";
   document.querySelector("#costVillagerNote").innerHTML = Math.ceil(villager.cost);
 }
+
 //Button Events--------------------------------------------------------------------------------
 function catchFish(){
   user.fishTotal++;
