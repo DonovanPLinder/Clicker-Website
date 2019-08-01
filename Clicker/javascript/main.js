@@ -1,10 +1,7 @@
-window.onload = () => {
-
 //Initializing game objects
 var fisherman = new Fisherman(1, 0.125);                              //Fisherman(cost, fishPerSec)
 var villager = new Villager(1, 0.2);                              //Villager(cost, goldPerSec)
 var user = new User(0, 1, 0, 1, 1,);                              //User(gold, fishPerClick, fishTotal, fishermanCount, villagerCount)
-
 
 //GAMESTATE-----------------------------------------------------------------------------------
 window.setInterval(function() {
@@ -144,4 +141,3 @@ else{
 }
 }//start expedition
 
-}//window.onload --Do not remove--

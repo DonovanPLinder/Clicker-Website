@@ -69,16 +69,19 @@ body{
 
 #upgrades{
   width:100%;
-  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+  box-shadow: 5px rgb(182, 182, 182);
 }
 
 .list-group{
-  max-height: 245px;
+  max-height: 215px;
   overflow-y: scroll;
 }
 
 #upgrades-title{
   background: rgb(252, 252, 240);
+  margin-bottom: 0;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 3px;
 }
 .card{
   box-shadow: -1px -1px 5px rgb(182, 182, 182);
