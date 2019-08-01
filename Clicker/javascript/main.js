@@ -50,7 +50,7 @@ function catchFish(){
   document.querySelector("#fishCaughtValue").innerHTML = user.fishTotal;
 }
 
-//Buy Fisherman
+//Buy Fisherman adds a fisherman if the user has enough gold to purchase. Then it increases the cost of a fisherman and updates the appropriate displays
 function buyFisherman() {
   var addFisherman = user.addFisherman();
   if(addFisherman){
@@ -58,7 +58,7 @@ function buyFisherman() {
     updateGold();
     updateFisherman();
   }
-  else{
+  else{ //handles error and error message
     document.getElementById("error").innerHTML = "You cannot buy a fisherman!";
     document.getElementById("error").style.display = "block";
     window.setTimeout(() => { 
@@ -67,7 +67,7 @@ function buyFisherman() {
   }
 }
 
-//Buy Villager
+//Buy Villager adds a villager if the user has enough fish to purchase. Then it increases the cost of a villager and updates the appropriate displays
 function buyVillager() {
   var addVillager = user.addVillager();
   if(addVillager){
@@ -75,7 +75,7 @@ function buyVillager() {
     updateFish();
     updateVillagers();
   }
-  else{
+  else{ //handles error and error messages
     document.getElementById("error").innerHTML = "You cannot buy a villager!";
     document.getElementById("error").style.display = "block";
     window.setTimeout(() => { 
