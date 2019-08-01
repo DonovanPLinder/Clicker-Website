@@ -62,7 +62,7 @@ function buyFisherman() {
     document.getElementById("error").style.display = "block";
     window.setTimeout(() => { 
       document.getElementById("error").style.display = "none";
-    }, 3000);
+    }, 4000);
   }
 }
 
@@ -79,7 +79,7 @@ function buyVillager() {
     document.getElementById("error").style.display = "block";
     window.setTimeout(() => { 
       document.getElementById("error").style.display="none";
-    }, 3000);
+    }, 4000);
   }
 }
 
