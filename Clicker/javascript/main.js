@@ -29,7 +29,7 @@ function addGold(){
 
 //each method updates the correct display element with current values every second
 function updateFish(){
-  document.querySelector("#fishCaughtValue").innerText = user.fishTotal;
+  document.querySelector("#fishCaughtValue").innerText = Math.floor(user.fishTotal);
   document.querySelector("#titleFishCount").innerText = Math.floor(user.fishTotal) + " Fish Caught";
 }
 function updateGold(){
@@ -47,7 +47,7 @@ function updateVillagers(){
 //Button Events--------------------------------------------------------------------------------
 function catchFish(){
   user.fishTotal++;
-  document.querySelector("#fishCaughtValue").innerHTML = user.fishTotal;
+  updateFish();
 }
 
 //Buy Fisherman adds a fisherman if the user has enough gold to purchase. Then it increases the cost of a fisherman and updates the appropriate displays
