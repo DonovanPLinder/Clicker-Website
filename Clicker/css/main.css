@@ -7,9 +7,7 @@ body{
   background-color: #ddd;
   margin-bottom: 1em;
 }
-#expeditionBanner {
-  margin-top: 1em;
-}
+
 #myBar {
 
   background-color: #4CAF50;
@@ -54,9 +52,13 @@ body{
   color: red;
   text-align: center;
 }
+
 #lblBeginExpedition{
   color: white;
-  display: inline-block;
+}
+
+#expeditionBanner{
+  margin-top: 1em;
 }
 
 #upgrades{
@@ -71,10 +73,15 @@ body{
 
 #upgrades-title{
   margin-bottom: 0;
+  margin-top: 1em;
 }
 
 .padding-top{
   padding-top: 2em;
+}
+
+.padding-bottom{
+  padding-bottom: 2em;
 }
 
 .card{
@@ -110,3 +117,7 @@ body{
   background: #f1e3dd;
 }
 
+.padding-top-bottom{
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
