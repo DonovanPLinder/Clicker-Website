@@ -1,3 +1,5 @@
+window.onload = () => {
+
 //Initializing game objects
 var fisherman = new Fisherman(1, 0.125);                              //Fisherman(cost, fishPerSec)
 var villager = new Villager(1, 0.2);                              //Villager(cost, goldPerSec)
@@ -140,5 +142,6 @@ else{
     }
   },1000*expeditionsArray[0][1]);
 }
-}
+}//start expedition
 
+}//window.onload --Do not remove--
