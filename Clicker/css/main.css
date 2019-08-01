@@ -18,10 +18,12 @@ body{
 
 }
 #buyFishermanButton{
-  width: 40%;
+  width: 50%;
+  word-wrap: none;
 }
 #buyVillagerButton{
-  width: 40%;
+  width: 50%;
+  word-wrap: none;
 }
 #fishLabel {
   padding-bottom: 1em;
@@ -107,3 +109,4 @@ body{
 .color-four{
   background: #f1e3dd;
 }
+
