@@ -1,6 +1,5 @@
 body{
-  /* background: #fffbe8; */
-  background-image: url("../resources/water.jpg");
+  background: #bccad6;
 }
 #myProgress {
   width: 100%;
@@ -8,10 +7,7 @@ body{
   background-color: #ddd;
   margin-bottom: 1em;
 }
-#expeditionBanner {
-  margin-top: 1em;
-  box-shadow: -1px -1px 5px rgb(182, 182, 182);
-}
+
 #myBar {
 
   background-color: #4CAF50;
@@ -20,27 +16,21 @@ body{
 
 }
 #buyFishermanButton{
-  width: 40%;
+  width: 50%;
+  word-wrap: none;
 }
 #buyVillagerButton{
-  width: 40%;
+  width: 50%;
+  word-wrap: none;
 }
 #fishLabel {
   padding-bottom: 1em;
   padding-top: 1em;
 }
 
-#fishButton {
-  padding-bottom: 2em;
-}
-
-#catchFish{
-  box-shadow: -1px -1px 5px rgb(182, 182, 182);
-}
-
 #fishCaught{
   background: #85add6;
-  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+
 }
 #nextFishermanNote{
   text-align: right;
@@ -51,44 +41,83 @@ body{
 
 #totalGold{
   background: gold;
-  box-shadow: -1px -1px 5px rgb(182, 182, 182);
 }
 
 #errorBox{
   height: 50px;
+  margin-bottom: 0;
 }
 
 #error{
   color: red;
   text-align: center;
 }
+
 #lblBeginExpedition{
   color: white;
-  display: inline-block;
+}
+
+#expeditionBanner{
+  margin-top: 1em;
 }
 
 #upgrades{
   width:100%;
-  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+  box-shadow: 5px rgb(182, 182, 182);
 }
 
 .list-group{
-  max-height: 245px;
+  max-height: 215px;
   overflow-y: scroll;
 }
 
 #upgrades-title{
-  background: rgb(252, 252, 240);
+  margin-bottom: 0;
+  margin-top: 1em;
 }
+
+.padding-top{
+  padding-top: 2em;
+}
+
+.padding-bottom{
+  padding-bottom: 2em;
+}
+
 .card{
-  box-shadow: -1px -1px 5px rgb(182, 182, 182);
+  box-shadow: -1px -1px 5px rgb(39, 39, 39);
 }
 
 .tracker{
   padding: 0.5em 0.5em;
-  border: 1px solid rgb(201, 201, 201);
-  border-radius: 3px;
   display: inline-block;
   color: white;
   width: 15%;
+}
+
+.border-shade{
+  border: 1px solid rgb(129, 129, 129);
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 1px rgb(116, 116, 116);
+}
+
+.color-one{
+  background: #bccad6;
+}
+
+.color-two{
+  background: #8d9db6;
+}
+
+.color-three{
+  background: #667292;
+}
+
+.color-four{
+  background: #f1e3dd;
+}
+
+.padding-top-bottom{
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
