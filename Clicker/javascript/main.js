@@ -11,11 +11,9 @@ window.setInterval(function() {
   updateGold();
   updateFisherman();
   updateVillagers();
+  updateFish();
 }, 1000);
 
-window.setInterval(function(){
-  addFish();
-}, 8000);
 
 function addFish(){
   user.fishTotal += user.fishermanCount * fisherman.fishPerSec;
